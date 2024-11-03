@@ -42,6 +42,7 @@ class Book(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     cover = models.ImageField(upload_to='book_covers/', null=True, blank=True)
     topic = models.CharField(
+        max_length=4,
         choices=TOPIC_CHOICES,
         default=None,
     )
