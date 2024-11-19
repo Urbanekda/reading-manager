@@ -26,8 +26,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "reading_manager.apps.ReadingManagerConfig",
-    "tailwind",
     "django_browser_reload",
+]
+
+INTERNAL_IPS = [
+    "127.0.0.1",
 ]
 
 MEDIA_URL = '/media/'

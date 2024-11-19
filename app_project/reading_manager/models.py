@@ -5,8 +5,6 @@ from django.utils import timezone
 # Create your models here.
 
 class Book(models.Model):
-
-    #Define topics as class variables
     FICTION = 'FIC'
     NON_FICTION = 'NON'
     SCIENCE = 'SCI'
@@ -16,8 +14,6 @@ class Book(models.Model):
     BIOGRAPHY = 'BIO'
     HISTORY = 'HIST'
     
-    #Define database tuples - Database record, "readable label"
-    #Access like this: new_book.get_topic_display() - outputs readable label
     TOPIC_CHOICES = [
         (FICTION, 'Fiction'),
         (NON_FICTION, 'Non-Fiction'),
