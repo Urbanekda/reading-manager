@@ -8,12 +8,37 @@
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
 </head>
 <body>
-    <div>
-        <h1 class="font-bold text-blue-300">Hello, world!</h1>
+    <div class="container">
+        <h1>My Reading List</h1>
+        <div class="general-buttons">
+                <a href="{% url 'add_book' %}">Add</a>
+            <button class="list-edit-button">Edit</button>
+        </div>
+        <div class="books-list">
+            {% for book in books %}
+            <div class="book-item">
+                <div class="book-icon">
+                    {% if book.cover %}
+                    <img src="{{ book.cover.url }}" alt="Book icon" style="width:150px;">
+                    {% endif %}
+                </div>
+                <div class="book-details">
+                    <h2 class="book-title">{{ book.name }}</h2>
+                    <p class="book-author">by {{ book.author }}</p>
+                    <p class="book-status">Status: {{ book.get_status_display }}</p>
+                    <p class="book-topic">Topic: {{ book.get_topic_display }}</p>
+                </div>
+                <div class="book-options">
+                    <a href="{% url 'edit_page' book.pk %}" class="edit-button" style="display: none;">Edit</a>
+                    <form method="POST" action="{% url 'delete_book' book.pk %}">
+                        {% csrf_token %}
+                        <button type="submit" style="display: none;" class="delete-button">Delete</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
-    <div class="p-4">
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Test Button
-        </button>
-    </div>
+    <script src="/static/js/main.js"></script>
 </body>
+</html>

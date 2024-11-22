@@ -25,6 +25,16 @@ class Book(models.Model):
         (HISTORY, 'History'),
     ]
 
+    NOT_STARTED = 'NS'
+    READING = 'RD'
+    COMPLETED = 'CP'
+    
+    STATUS_CHOICES = [
+        (NOT_STARTED, 'Not Started'),
+        (READING, 'Reading'),
+        (COMPLETED, 'Completed'),
+    ]
+
     name = models.CharField(max_length=64)
     author = models.CharField(max_length=64)
     rating = models.IntegerField(
@@ -36,13 +46,18 @@ class Book(models.Model):
         blank=True
     )
     created_at = models.DateTimeField(default=timezone.now)
-    cover = models.ImageField(upload_to='book_covers/', null=True, blank=True)
+    cover = models.ImageField(null=True, blank=True)
     topic = models.CharField(
         max_length=4,
         choices=TOPIC_CHOICES,
         default=None,
     )
     notes = models.TextField(blank=True)
+    status = models.CharField(
+        max_length=2,
+        choices=STATUS_CHOICES,
+        default=NOT_STARTED,
+    )
     
     class Meta:
         ordering = ["-created_at"]

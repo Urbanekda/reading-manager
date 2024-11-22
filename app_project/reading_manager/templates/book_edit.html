@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Book</title>
+    {% load static %}
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+</head>
+
+<body>
+<div class="container mt-4">
+    <h2>Edit Book</h2>
+    <form method="POST" enctype="multipart/form-data" class="book_edit_form">
+        {% csrf_token %}
+        
+        <div class="name_input">
+            <label for="name" class="form-label">Book Title</label>
+            <input type="text" class="form-control" id="name" name="name" required maxlength="64" value="{{ book.name }}">
+        </div>
+
+        <div class="author_input">
+            <label for="author" class="form-label">Author</label>
+            <input type="text" class="form-control" id="author" name="author" required maxlength="64" value="{{ book.author }}">
+        </div>
+
+        <div class="rating_input">
+            <label for="rating" class="form-label">Rating (1-100)</label>
+            <input type="number" class="form-control" id="rating" name="rating" min="1" max="100" value="{{ book.rating }}">
+        </div>
+
+        <div class="topic_input">
+            <label for="topic" class="form-label">Topic</label>
+            <select class="form-select" id="topic" name="topic" required>
+                <option value="" disabled>Choose a topic...</option>
+                {% for topic_code, topic_name in topic_choices %}
+                    <option value="{{ topic_code }}" {% if topic_code == book.topic %}selected{% endif %}>{{ topic_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="status_input">
+            <label for="status" class="form-label">Reading Status</label>
+            <select class="form-select" id="status" name="status" required>
+                {% for status_code, status_name in status_choices %}
+                    <option value="{{ status_code }}" {% if status_code == book.status %}selected{% endif %}>{{ status_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="cover_input">
+            {% if book.cover %}
+                <p>Current cover: {{ book.cover.name }}</p>
+                <img src="{{ book.cover.url }}" alt="Book icon" style="width:150px;">
+            {% endif %}
+            <label for="cover" class="form-label">Book Cover (optional)</label>
+            <input type="file" class="form-control" id="cover" name="cover" accept="image/*">
+        </div>
+
+        <div class="notes_input">
+            <label for="notes" class="form-label">Notes</label>
+            <textarea class="form-control" id="notes" name="notes" rows="4">{{ book.notes }}</textarea>
+        </div>
+
+        <button type="submit" class="submit-button">Save Changes</button>
+    </form>
+</div>
+</body>
