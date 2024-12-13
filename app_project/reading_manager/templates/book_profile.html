@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Manager</title>
+    {% load static %}
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ book.name }} by {{ book.author }}</h1>
+        {% if book.cover %}
+        <img src="{{ book.cover.url }}" alt="Book icon" style="width:150px;">
+        {% endif %}
+        <p>{{ book.get_topic_display }}</p>
+        <p>{{ book.get_status_display }}</p>
+        <p><strong>Rating</strong>: {{ book.rating }}/100</p>
+        <h2>Summary and Key Points</h2>
+           <p>{{ book.notes }}</p>
+        
+        <div class="book-options">
+            <a href="{% url 'edit_page' book.pk %}" class="edit-button">Edit</a>
+            <form method="POST" action="{% url 'delete_book' book.pk %}">
+            {% csrf_token %}
+                <button type="submit" class="delete-button">Delete</button>
+            </form>
+        </div>
+        
+    <script src="/static/js/main.js"></script>
+    </div>
+</body>
+</html>

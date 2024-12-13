@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect
 from .models import Book
-# Create your views here.
 
 def index(request):
     books = Book.objects.all()
@@ -61,16 +60,6 @@ def add_book(request):
     })
 
 
-# Sjednotit edit_page_view a edit_book do jedný funkce
-def edit_page_view(request, pk):
-    book = get_object_or_404(Book, pk=pk)
-         
-    return render(request, "book_edit.html", {
-        "book": book,
-        "topic_choices": Book.TOPIC_CHOICES,
-        "status_choices": Book.STATUS_CHOICES,
-    })
-
 def edit_book(request, pk):
     book = get_object_or_404(Book, pk=pk)
     
@@ -106,5 +95,19 @@ def edit_book(request, pk):
                 "status_choices": Book.STATUS_CHOICES,
             })
     
-    return redirect('index')
+    return render(request, "book_edit.html", {
+        "book": book,
+        "topic_choices": Book.TOPIC_CHOICES,
+        "status_choices": Book.STATUS_CHOICES,
+    })
+
+def view_book(request, pk):
+    book = get_object_or_404(Book, pk=pk)
+
+    return render (request, "book_profile.html", {
+        "book": book,
+        "topic_choices": Book.TOPIC_CHOICES,
+        "status_choices": Book.STATUS_CHOICES,
+        })
+
     
