@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "reading_manager.apps.ReadingManagerConfig",
     "django_browser_reload",
+    "tinymce",
 ]
 
 INTERNAL_IPS = [

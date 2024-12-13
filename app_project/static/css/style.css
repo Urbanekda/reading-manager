@@ -20,6 +20,11 @@ h1 {
     font-weight: 600;
 }
 
+h2 {
+    text-align: center;
+    color: #2c3e50;
+}
+
 /* Button styles */
 .general-buttons {
     display: flex;
@@ -58,7 +63,7 @@ h1 {
 }
 
 .visit-profile-button {
-    background-color: #3498db;
+    background-color: #2c3e50;
     color: white;
     border: none;
     padding: 0.5rem 1rem;
@@ -167,8 +172,78 @@ h1 {
     transform: translateY(-1px);
 }
 
-.visit-profile-button {
+
+/* Form Styling */
+
+.form_container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Form specific styles */
+.form_container .form {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Input containers */
+.form_container .name_input,
+.form_container .author_input,
+.form_container .rating_input,
+.form_container .topic_input,
+.form_container .status_input,
+.form_container .cover_input,
+.form_container .notes_input {
+    margin-bottom: 1.5rem;
+}
+
+/* Labels */
+.form_container .form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #444;
+}
+
+/* Form controls */
+.form_container .form-control,
+.form_container .form-select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+/* Focus states */
+.form_container .form-control:focus,
+.form_container .form-select:focus {
+    outline: none;
+    border-color: #4A90E2;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+}
+
+/* Submit button */
+.form_container .submit-button {
+    width: 100%;
+    padding: 1rem;
     background-color: #2c3e50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 1rem;
+}
+
+.form_container .submit-button:hover {
+    background-color: #357ABD;
 }
 
 /* Responsive design */
