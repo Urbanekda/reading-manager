@@ -2,9 +2,7 @@ from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils import timezone
 
-
-# Create your models here.
-
+# Book model containing attributes, such as topic, author, name, notes, etc.
 class Book(models.Model):
     FICTION = 'FIC'
     NON_FICTION = 'NON'
@@ -26,6 +24,7 @@ class Book(models.Model):
         (HISTORY, 'History'),
     ]
 
+    #Reading status
     NOT_STARTED = 'NS'
     READING = 'RD'
     COMPLETED = 'CP'

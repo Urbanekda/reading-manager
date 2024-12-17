@@ -10,26 +10,40 @@
 
 </head>
 <body>
-    <div class="container">
+    <div class="book_profile_top">
+        <a href="{% url 'index' %}" class="back_button">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </a>    
         <h1>{{ book.name }} by {{ book.author }}</h1>
-        {% if book.cover %}
-        <img src="{{ book.cover.url }}" alt="Book icon" style="width:150px;">
-        {% endif %}
-        <p>{{ book.get_topic_display }}</p>
-        <p>{{ book.get_status_display }}</p>
-        <p><strong>Rating</strong>: {{ book.rating }}/100</p>
-        <h2>Summary and Key Points</h2>
-           <p>{{ book.notes }}</p>
+    </div>
+    
+    <div class="book_profile">
         
-        <div class="book-options">
-            <a href="{% url 'edit_page' book.pk %}" class="edit-button">Edit</a>
-            <form method="POST" action="{% url 'delete_book' book.pk %}">
-            {% csrf_token %}
-                <button type="submit" class="delete-button">Delete</button>
-            </form>
+        <div class="book_details">
+            {% if book.cover %}
+            <img src="{{ book.cover.url }}" alt="Book icon" style="width:150px;">
+            {% endif %}
+            <p>{{ book.get_topic_display }}</p>
+            <p>{{ book.get_status_display }}</p>
+            <p><strong>Rating</strong>: {{ book.rating }}/100</p>  
+        </div>
+      
+        <div class="book_summary">
+            <h2>Summary and Key Points</h2>
+            <p>{{ book.notes|safe }}</p>
         </div>
         
+        
+        
+        
     <script src="/static/js/main.js"></script>
+    </div>
+    <div class="book-options">
+        <a href="{% url 'edit_page' book.pk %}" class="edit-button">Edit</a>
+        <form method="POST" action="{% url 'delete_book' book.pk %}">
+            {% csrf_token %}
+            <button type="submit" class="delete-button">Delete</button>
+        </form>
     </div>
 </body>
 </html>

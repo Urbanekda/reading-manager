@@ -27,7 +27,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "reading_manager.apps.ReadingManagerConfig",
     "django_browser_reload",
-    "tinymce",
 ]
 
 INTERNAL_IPS = [
@@ -54,6 +53,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_browser_reload.middleware.BrowserReloadMiddleware'
 ]
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': '100%',
+        'extraAllowedContent': 'a[!href];abbr[!title];code',
+    },
+}
 
 ROOT_URLCONF = 'app_project.urls'
 

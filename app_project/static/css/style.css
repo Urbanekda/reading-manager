@@ -1,3 +1,5 @@
+/* General styles */
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
     background-color: #f5f6fa;
@@ -5,6 +7,12 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
+}
+
+a {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    color: #2c3e50;
+    font-weight: 600;
 }
 
 .container {
@@ -16,7 +24,6 @@ body {
 h1 {
     text-align: center;
     color: #2c3e50;
-    margin-bottom: 2rem;
     font-weight: 600;
 }
 
@@ -25,12 +32,18 @@ h2 {
     color: #2c3e50;
 }
 
-/* Button styles */
 .general-buttons {
     display: flex;
     justify-content: center;
     gap: 1rem;
     margin-bottom: 2rem;
+}
+
+.logout {
+    display: flex;
+    justify-content: end;
+    padding-right: 5%;
+
 }
 
 .icon-button {
@@ -47,7 +60,6 @@ h2 {
     color: #007bff;
 }
 
-/* Optional: Add rotation animation for the settings icon when active */
 .list-edit-button.active i {
     animation: spin 0.3s ease-in-out;
     color: #007bff;
@@ -77,6 +89,48 @@ h2 {
 .visit-profile-button:hover {
     background-color: #2980b9;
     transform: translateY(-1px);
+}
+
+.back_button {
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: transform 0.2s, background-color 0.2s;
+    max-height: 25px;
+    align-self: center;
+}
+
+.back_button:hover {
+    transform: scale(1.1);
+}
+
+.book_profile {
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    margin: 3%;
+}
+
+.book_profile_top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.book_details {
+    padding: 5%;
+}
+
+.book-options {
+    display: flex;
+    justify-content: left;
+    margin-left: 10%;
+    margin-bottom: 5%;
 }
 
 /* Books list styling */
@@ -181,7 +235,6 @@ h2 {
     padding: 20px;
 }
 
-/* Form specific styles */
 .form_container .form {
     background-color: #fff;
     padding: 2rem;
@@ -200,6 +253,7 @@ h2 {
     margin-bottom: 1.5rem;
 }
 
+
 /* Labels */
 .form_container .form-label {
     display: block;
@@ -209,8 +263,16 @@ h2 {
 }
 
 /* Form controls */
-.form_container .form-control,
 .form_container .form-select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+input {
     width: 100%;
     padding: 0.75rem;
     border: 1px solid #ddd;
@@ -246,11 +308,26 @@ h2 {
     background-color: #357ABD;
 }
 
+.register_form {
+    display: flex;
+    flex-direction: column;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
     .book-item {
         flex-direction: column;
         text-align: center;
+    }
+
+    .book_profile {
+        flex-direction: column;
+    }
+
+    .book_details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .book-icon {
